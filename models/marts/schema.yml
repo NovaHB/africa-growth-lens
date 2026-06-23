@@ -1,0 +1,280 @@
+version: 2
+
+models:
+  - name: mart_gdp_growth
+    description: >
+      Annual GDP growth rate (WDI indicator NY.GDP.MKTP.KD.ZG) for African
+      countries (Sub-Saharan Africa and Middle East & North Africa), 2000
+      onwards. One row per country and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification (e.g. Low income, Lower middle income, Upper middle income, High income)."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: gdp_growth_rate
+        description: "GDP growth (annual %), renamed from the source indicator value."
+
+  - name: mart_digital_adoption
+    description: >
+      Digital adoption indicators for African countries (Sub-Saharan Africa and
+      Middle East & North Africa), 2000 onwards: internet usage
+      (IT.NET.USER.ZS) and mobile cellular subscriptions (IT.CEL.SETS.P2).
+      One row per country, indicator, and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: indicator_name
+        description: >
+          Human-readable name of the digital adoption indicator —
+          'Individuals using the Internet (% of population)' or
+          'Mobile cellular subscriptions (per 100 people)'.
+      - name: value
+        description: >
+          Observed value of the indicator; percent of population for internet
+          usage, subscriptions per 100 people for mobile cellular.
+
+  - name: mart_gdp_per_capita
+    description: >
+      GDP per capita (constant 2015 US$, WDI indicator NY.GDP.PCAP.KD) for
+      African countries, 2000 onwards. One row per country and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: gdp_per_capita
+        description: "GDP per capita (constant 2015 US$), renamed from the source indicator value."
+
+  - name: mart_population_trends
+    description: >
+      Population indicators for African countries, 2000 onwards: total
+      population (SP.POP.TOTL), urban population share (SP.URB.TOTL.IN.ZS), and
+      annual population growth (SP.POP.GROW). One row per country, indicator,
+      and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: indicator_name
+        description: "Human-readable name of the population indicator."
+      - name: value
+        description: >
+          Observed value; total count for population, percent of total for
+          urban share, annual percent for population growth.
+
+  - name: mart_trade_investment
+    description: >
+      Trade and investment indicators for African countries, 2000 onwards:
+      foreign direct investment net inflows (BX.KLT.DINV.WD.GD.ZS) and trade as
+      a share of GDP (NE.TRD.GNFS.ZS). One row per country, indicator, and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: indicator_name
+        description: "Human-readable name of the trade/investment indicator."
+      - name: value
+        description: "Observed value of the indicator (both expressed as % of GDP)."
+
+  - name: mart_human_development
+    description: >
+      Human development indicators for African countries, 2000 onwards: adult
+      literacy rate (SE.ADT.LITR.ZS), under-5 mortality rate (SH.DYN.MORT), and
+      life expectancy at birth (SP.DYN.LE00.IN). One row per country, indicator,
+      and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: indicator_name
+        description: "Human-readable name of the human development indicator."
+      - name: value
+        description: >
+          Observed value; percent of people ages 15+ for literacy, deaths per
+          1,000 live births for under-5 mortality, years for life expectancy.
+
+  - name: mart_electricity_access
+    description: >
+      Access to electricity (% of population, WDI indicator EG.ELC.ACCS.ZS) for
+      African countries, 2000 onwards. One row per country and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: electricity_access_pct
+        description: "Access to electricity (% of population), renamed from the source indicator value."
+
+  - name: mart_country_rankings
+    description: >
+      For each indicator, ranks African countries against one another using the
+      latest year for which that indicator has data. Higher value receives
+      rank 1 (RANK() window function, so ties share a rank). One row per
+      indicator and country.
+    columns:
+      - name: indicator_code
+        description: "World Bank WDI indicator code."
+      - name: indicator_name
+        description: "Human-readable name of the indicator."
+      - name: year
+        description: "Latest year for which this indicator has data (the year used for ranking)."
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: value
+        description: "Observed indicator value in the ranking year."
+      - name: country_rank
+        description: "Rank of the country for this indicator (1 = highest value); ties share a rank."
+
+  - name: mart_yoy_changes
+    description: >
+      Year-over-year change in each indicator per country, computed with a LAG()
+      window function partitioned by country and indicator and ordered by year.
+      previous_year_value is the prior available observation; only rows with a
+      non-null change are kept. One row per country, indicator, and year (from
+      the second available observation onward).
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: indicator_code
+        description: "World Bank WDI indicator code."
+      - name: indicator_name
+        description: "Human-readable name of the indicator."
+      - name: year
+        description: "Calendar year of the current observation."
+      - name: value
+        description: "Indicator value in the current year."
+      - name: previous_year_value
+        description: "Indicator value in the prior available observation (LAG over year)."
+      - name: yoy_change
+        description: "value minus previous_year_value; never null in this model."
+
+  - name: mart_income_group_summary
+    description: >
+      Indicator averages across African countries within each World Bank income
+      group, per year. One row per income group, indicator, and year.
+    columns:
+      - name: income_group
+        description: "World Bank income classification (grouping key)."
+      - name: indicator_code
+        description: "World Bank WDI indicator code."
+      - name: indicator_name
+        description: "Human-readable name of the indicator."
+      - name: year
+        description: "Calendar year of the observations being averaged."
+      - name: avg_value
+        description: "Mean indicator value across countries in the income group for that year."
+      - name: country_count
+        description: "Number of distinct countries contributing to the average."
+
+  - name: mart_inflation
+    description: >
+      Annual inflation rate (consumer prices, WDI indicator FP.CPI.TOTL.ZG) for
+      African countries, 2000 onwards. One row per country and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: inflation_rate
+        description: "Inflation, consumer prices (annual %), renamed from the source indicator value."
+
+  - name: mart_regional_summary
+    description: >
+      Indicator averages across African countries within each World Bank region,
+      per year. One row per region, indicator, and year.
+    columns:
+      - name: region
+        description: "World Bank region (grouping key) — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: indicator_code
+        description: "World Bank WDI indicator code."
+      - name: indicator_name
+        description: "Human-readable name of the indicator."
+      - name: year
+        description: "Calendar year of the observations being averaged."
+      - name: avg_value
+        description: "Mean indicator value across countries in the region for that year."
+      - name: country_count
+        description: "Number of distinct countries contributing to the average."
+
+  - name: mart_country_latest
+    description: >
+      Most recent available observation for each country and indicator, selected
+      with ROW_NUMBER() via QUALIFY (latest year wins). Values are already
+      non-null from staging, so this is the most recent non-null value. One row
+      per country and indicator.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification."
+      - name: indicator_code
+        description: "World Bank WDI indicator code."
+      - name: indicator_name
+        description: "Human-readable name of the indicator."
+      - name: year
+        description: "Year of the most recent available observation for this country and indicator."
+      - name: value
+        description: "Indicator value in that most recent year."

@@ -1,0 +1,8 @@
+# dbt + BigQuery adapter for building the models
+dbt-bigquery
+
+# Export script (scripts/export_to_json.py) dependencies
+google-cloud-bigquery
+pandas
+db-dtypes
+pyarrow

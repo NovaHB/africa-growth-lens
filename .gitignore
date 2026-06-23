@@ -1,0 +1,13 @@
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+
+# Secrets / local config
+.env
+profiles.yml
+
+# Ignore JSON everywhere (e.g. service-account keyfiles), but keep exported data
+*.json
+!data/
+!data/*.json

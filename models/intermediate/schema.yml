@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_africa_indicators
+    description: >
+      African (Sub-Saharan Africa and Middle East & North Africa) country
+      attributes joined to a curated set of World Bank WDI indicators
+      (GDP growth, inflation, internet usage, mobile subscriptions, and bank
+      account ownership) for years 2000 onwards. One row per country,
+      indicator, and year.
+    columns:
+      - name: country_code
+        description: "ISO three-letter World Bank country code (join key between staging models)."
+      - name: country_name
+        description: "Country short name."
+      - name: region
+        description: "World Bank region — either 'Sub-Saharan Africa' or 'Middle East & North Africa'."
+      - name: income_group
+        description: "World Bank income classification (e.g. Low income, Lower middle income, Upper middle income, High income)."
+      - name: indicator_code
+        description: "World Bank WDI indicator code (one of the five curated codes)."
+      - name: indicator_name
+        description: "Human-readable name of the WDI indicator."
+      - name: year
+        description: "Calendar year of the observation (2000 onwards)."
+      - name: value
+        description: "Observed value of the indicator for the country and year; units depend on the indicator (percent, per-100-people, etc.)."

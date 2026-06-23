@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: world_bank_wdi
+    description: "World Bank World Development Indicators (WDI) public dataset."
+    database: bigquery-public-data
+    schema: world_bank_wdi
+    tables:
+      - name: country_summary
+        description: "Reference attributes for each country (region, income group, currency, etc.)."
+      - name: indicators_data
+        description: "Long-format fact table of WDI indicator values by country and year."
