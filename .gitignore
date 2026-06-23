@@ -11,3 +11,9 @@ profiles.yml
 *.json
 !data/
 !data/*.json
+
+# Keep dashboard manifests and bundled data (still ignores node_modules/dist via dashboard/.gitignore)
+!dashboard/package.json
+!dashboard/package-lock.json
+!dashboard/public/data/
+!dashboard/public/data/*.json
